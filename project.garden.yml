@@ -1,0 +1,9 @@
+kind: Project
+name: jib-container
+environments:
+  - name: local
+  - name: remote
+providers:
+  - name: jib # <----
+  - name: kubernetes
+    environments: ["dev"]

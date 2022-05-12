@@ -1,0 +1,12 @@
+kind: ModuleTemplate
+name: sample-module-template
+modules:
+  - type: exec
+    name: ${parent.name}-module
+    description: "build libs"
+    local: true
+    include: [./**]
+    exclude: [./**/target/**/*]
+    build:
+      command:
+        - "script/maven-build.sh"

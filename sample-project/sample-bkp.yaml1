@@ -1,0 +1,13 @@
+kind: Module
+type: exec
+name: sample-project
+local: true
+include: [./**]
+build:
+  command: 
+   - "script/maven-build.sh"
+
+kind: Module
+type: templated
+template: spring-service-module-template
+name: cdx-delivery

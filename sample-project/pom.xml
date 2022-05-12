@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.6.2</version>
+		<relativePath/>
+	</parent>
+	<groupId>com.telushealth.exchange.cs</groupId>
+	<artifactId>spring-boot-sample-project</artifactId>
+	<version>15.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>spring-boot-sample-project</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>1.8</java.version>
+		<start-class>com.telushealth.exchange.cs.efaxsimulator.Application</start-class>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+	</dependencies>
+
+
+<build>
+		<resources>
+			<resource>
+			  <directory>src/main/resources</directory>
+			  <filtering>true</filtering>
+			</resource>
+		</resources>		
+		<pluginManagement>
+	      <plugins>
+	        <plugin>
+	          <groupId>com.google.cloud.tools</groupId>
+	          <artifactId>jib-maven-plugin</artifactId>
+	          <version>3.1.4</version>
+	        </plugin>
+	      </plugins>
+	    </pluginManagement>	
+		<plugins>
+		  <plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+		  </plugin>
+	      <plugin>
+	        <groupId>com.google.cloud.tools</groupId>
+	        <artifactId>jib-maven-plugin</artifactId>
+	        <dependencies>
+	          <dependency>
+	            <groupId>com.google.cloud.tools</groupId>
+	              <artifactId>jib-spring-boot-extension-maven</artifactId>
+	              <version>0.1.0</version>
+	          </dependency>
+		      </dependencies>
+	       	<configuration>
+	          <from>
+	            <image>gcr.io/distroless/java:8-debug</image>
+	          </from>
+	          <to>
+	            <image>northamerica-northeast1-docker.pkg.dev/th-thx-dev-10c7/thx-dev-docker-repo/${project.artifactId}:${project.version}</image>
+	          </to>
+	          <container>
+	            <user>nobody</user>
+	            <appRoot>/opt/thxservice</appRoot>
+	            <workingDirectory>/opt/thxservice</workingDirectory>
+	          </container>
+	          <pluginExtensions>
+	            <pluginExtension>
+	              <implementation>com.google.cloud.tools.jib.maven.extension.springboot.JibSpringBootExtension</implementation>
+	            </pluginExtension>
+	          </pluginExtensions>
+	  	    </configuration>
+	      </plugin>
+			
+		</plugins>
+	</build>
+
+</project>
