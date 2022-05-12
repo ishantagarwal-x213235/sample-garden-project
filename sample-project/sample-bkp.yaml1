@@ -10,4 +10,3 @@ build:
 kind: Module
 type: templated
 template: spring-service-module-template
-name: cdx-delivery
